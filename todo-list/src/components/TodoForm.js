@@ -5,14 +5,34 @@ import { connect } from "react-redux";
 
 function TodoForm(props){
 
-    const [todo, setTodo] = useState("");
+    const [todoItem, setTodoItem] = useState({ id: Date.now(), todo: "", completed: false });
 
-    const handleChange = () => {
+    const handleChange = (event) => {
+
+        event.preventDefault();
+
+        setTodoItem({
+            id: Date.now(),
+            [event.target.name]: event.target.value,
+            completed: false
+        })
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        props.addTodo(todoItem);   
+
+        console.log("todo", todoItem);
+
+        resetForm();
 
     }
 
-    const handleSubmit = () => {
-
+    const resetForm = () => {
+        setTodoItem({
+            todo: ""
+        })
     }
 
     return(
@@ -23,7 +43,7 @@ function TodoForm(props){
                 <input type = "text" 
                        onChange = {handleChange} 
                        name = "todo" 
-                       value = {todo} 
+                       value = {todoItem.todo} 
                        placeholder = "...add todo" 
                 />
 

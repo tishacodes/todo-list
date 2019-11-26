@@ -34,7 +34,7 @@ function reducer(state = initialState, action){
                 ...state,
                 //filter method creates a new array with all elements that passes the test(returns true)
                 todoList: state.todoList.filter( todo => {
-                    {
+                    {                        
                         return (todo.id === action.payload) ? false : true
                     }
                 })
@@ -44,14 +44,17 @@ function reducer(state = initialState, action){
         case TOGGLE_COMPLETED:
             return {
                 ...state,
-                todoList: state.todoList.find( todo => {
+                todoList: state.todoList.map( todo => {
                     if(todo.id === action.payload){
-                        return !todo.completed
+                        return {
+                            ...todo,
+                            completed: !todo.completed
+                        }                    
                     }
                     else {
-                        return state;
+                        return todo;
                     }
-                   
+
                 })
 
             }

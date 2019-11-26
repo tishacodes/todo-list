@@ -10,10 +10,16 @@ function TodoList(props){
 
         <div>
 
-            <TodoForm />
+           <TodoForm />
+
+           {props.todoList.map (todo => {
+               return <TodoItem todo = {todo} 
+                                deleteTodo = {props.deleteTodo} 
+                                toggleCompleted = {props.toggleCompleted}
+                     />
+           })}
             
         </div>
-
 
     );
 
