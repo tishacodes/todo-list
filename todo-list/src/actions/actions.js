@@ -4,17 +4,32 @@
 
 export const ADD_TODO = "ADD_TODO";
 export const DELETE_TODO = "DELETE_TODO";
-export const MARK_TODO_COMPLETED = "MARK_TODO_COMPLETED";
+export const TOGGLE_COMPLETED = "TOGGLE_COMPLETED";
 
 //action creators - functions that create and dispatches/returns actions (objects)
-export const addTodo = () => {
+export const addTodo = (newTodo) => {
+
+    return{
+        type: ADD_TODO,
+        payload: newTodo
+    }
 
 }
 
-export const deleteTodo = () => {
+export const deleteTodo = (id) => {
+
+    return{
+        type: DELETE_TODO,
+        payload: id
+    }
 
 }
 
-export const markTodoCompleted = () => {
+export const toggleCompleted = (id) => {
+
+    return{
+        type: TOGGLE_COMPLETED,
+        payload: id
+    }
 
 }
