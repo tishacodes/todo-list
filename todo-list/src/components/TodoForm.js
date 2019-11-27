@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
+import { TextField, Paper, Button, Grid } from "@material-ui/core"
 import { connnect } from "react-redux";
 import { addTodo } from "../actions/actions.js";
 import { connect } from "react-redux";
@@ -21,7 +22,13 @@ function TodoForm(props){
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        props.addTodo(todoItem);   
+        if(todoItem.todo === ""){
+            window.alert("Please enter a todo item.")
+        } else {
+
+            props.addTodo(todoItem);  
+
+        }       
 
         console.log("todo", todoItem);
 
@@ -37,21 +44,32 @@ function TodoForm(props){
 
     return(
 
-        <div>
+
+        <Paper style={{ margin: 16, padding: 16 }}>
             <form onSubmit = {handleSubmit} >
-
-                <input type = "text" 
-                       onChange = {handleChange} 
-                       name = "todo" 
-                       value = {todoItem.todo} 
-                       placeholder = "...add todo" 
-                />
-
-                <button type = "submit" onClick = {handleSubmit}> Add </button>
-
+                <Grid container>
+                    
+                    <Grid display="flex" flexWrap="nowrap" xs={10} md={10} justifyContent = "flex-start" item style={{ paddingRight: 16 }} >
+                        <TextField
+                        placeholder="...add todo"
+                        name = "todo"
+                        value = {todoItem.todo}
+                        onChange = {handleChange}            
+                        fullWidth />
+                    </Grid>
+                    <Grid xs={2} md={1} item>
+                        <Button
+                        fullWidth
+                        color="secondary"
+                        variant="outlined"
+                        type = "submit"
+                        onClick = {handleSubmit}>
+                        Add
+                        </Button>
+                    </Grid>               
+                </Grid>
             </form>
-
-        </div>
+        </Paper>
 
     );
 

@@ -5,6 +5,9 @@
 export const ADD_TODO = "ADD_TODO";
 export const DELETE_TODO = "DELETE_TODO";
 export const TOGGLE_COMPLETED = "TOGGLE_COMPLETED";
+export const CLEAR_ALL_TASKS = "CLEAR_ALL_TASKS";
+export const CLEAR_COMPLETED_TASKS = "GET_COMPLETED_TASKS_COUNT";
+export const CLEAR_INCOMPLETE_TASKS = "GET_UNCOMPLETED_TASKS_COUNT";
 
 //action creators - functions that create and dispatches/returns actions (objects)
 export const addTodo = (newTodo) => {
@@ -33,3 +36,30 @@ export const toggleCompleted = (id) => {
     }
 
 }
+
+export const clearAllTasks = (todoList) => {
+
+    return {
+        type: CLEAR_ALL_TASKS,
+        payload: todoList
+    }
+}
+
+export const clearCompletedTasks = (todoList) => {
+
+    return {
+        type: CLEAR_COMPLETED_TASKS,
+        payload: todoList
+    }
+}
+
+export const clearIncompleteTasks = (todoList) => {
+
+    return {
+        type: CLEAR_INCOMPLETE_TASKS,
+        payload: todoList
+    }
+}
+
+
+

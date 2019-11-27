@@ -1,6 +1,10 @@
 import {ADD_TODO} from "../actions/actions.js";
 import {DELETE_TODO} from "../actions/actions.js";
 import {TOGGLE_COMPLETED} from "../actions/actions.js";
+import {CLEAR_ALL_TASKS} from "../actions/actions.js";
+import {CLEAR_COMPLETED_TASKS} from "../actions/actions.js";
+import {CLEAR_INCOMPLETE_TASKS} from "../actions/actions.js";
+
 
 //state object
 const initialState = {
@@ -10,7 +14,8 @@ const initialState = {
             todo: "clean my room",
             completed: false
         }
-    ]
+    ],
+    count: 0
     
 }
 
@@ -57,7 +62,32 @@ function reducer(state = initialState, action){
 
                 })
 
+            }       
+
+        case CLEAR_ALL_TASKS:
+            return {
+                ...state,
+                todoList: state.todoList.filter (todo => {
+                    return false;
+                })
+
             }
+
+        case CLEAR_COMPLETED_TASKS:
+            return {
+                ...state,
+                todoList: state.todoList.filter (todo => {
+                    return !todo.completed
+                })
+            }
+
+            case CLEAR_INCOMPLETE_TASKS:
+                    return {
+                        ...state,
+                        todoList: state.todoList.filter (todo => {
+                            return todo.completed
+                        })
+                    }
 
         default:
             return state;

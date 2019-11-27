@@ -1,25 +1,31 @@
 import React from "react";
+import {Paper, Grid, List, ListItem, Checkbox, IconButton, ListItemText, ListItemSecondaryAction} from "@material-ui/core";
+import DeleteOutlined from '@material-ui/icons/DeleteOutlined';
 
 function TodoItem(props){
 
     return(
 
-        <div>        
+       
 
-            <span onClick = {() => props.toggleCompleted(props.todo.id)}
-                //console.log("toggle after click", props.todo.completed);
-                className = { props.todo.completed ? "completed" : "not-completed"}>
-                C
-                </span>
+        <Paper style={{ margin: 16, padding: 5 }}>
+        
+            <ListItem divider={props.divider}>
+                <Checkbox
+                onChange = {() => props.toggleCompleted(props.todo.id)}
+                //checked={props.checked}
+                disableRipple/>
 
-                <p> {props.todo.todo} </p> 
+                <ListItemText primary={props.todo.todo} style = {{overflow: "auto"}} className = { props.todo.completed ? "completed" : "not-completed"}/>                
+                                
+                <IconButton aria-label="Delete Todo" >
+                    <DeleteOutlined onClick = {() => props.deleteTodo(props.todo.id)}/>
+                </IconButton>   
+                     
 
-            <span onClick = {() => {
-                console.log("delete clicked");
-                props.deleteTodo(props.todo.id)}
-            }> X </span>   
-
-        </div>
+            </ListItem>
+        
+        </Paper>
     );
 
 
