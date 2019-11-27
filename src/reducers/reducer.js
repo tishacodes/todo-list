@@ -8,14 +8,25 @@ import {CLEAR_INCOMPLETE_TASKS} from "../actions/actions.js";
 
 //state object
 const initialState = {
-    todoList: [
+    todoList: [        
         {
             id: 1,
-            todo: "clean my room",
+            todo: "code",
+            completed: false
+        },
+
+        {
+            id: 2,
+            todo: "sleep",
+            completed: false
+        },
+
+        {
+            id: 3,
+            todo: "repeat",
             completed: false
         }
-    ],
-    count: 0
+    ]    
     
 }
 

@@ -18,6 +18,7 @@ import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import LowPriorityIcon from '@material-ui/icons/LowPriority';
 import Tooltip from '@material-ui/core/Tooltip';
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -110,9 +111,7 @@ export default function PrimarySearchAppBar(props) {
 
   const handleMobileMenuOpen = event => {
     setMobileMoreAnchorEl(event.currentTarget);
-  };
-
-  
+  };  
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
@@ -168,7 +167,7 @@ export default function PrimarySearchAppBar(props) {
             color="inherit"
             aria-label="open drawer"
           >
-            <MenuIcon />
+            <FormatListBulletedIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             Todo App
