@@ -4,30 +4,26 @@ import DeleteOutlined from '@material-ui/icons/DeleteOutlined';
 
 function TodoItem(props){
 
-    return(
-
-       
+    return(       
 
         <Paper style={{ margin: 16, padding: 5 }}>
         
             <ListItem divider={props.divider}>
                 <Checkbox
                 onChange = {() => props.toggleCompleted(props.todo.id)}
-                //checked={props.checked}
+                checked={props.todo.completed}
                 disableRipple/>
 
-                <ListItemText primary={props.todo.todo} style = {{overflow: "auto"}} className = { props.todo.completed ? "completed" : "not-completed"}/>                
+                <ListItemText primary={props.todo.todo} style = {{overflow: "auto"}} />                
                                 
                 <IconButton aria-label="Delete Todo" >
                     <DeleteOutlined onClick = {() => props.deleteTodo(props.todo.id)}/>
-                </IconButton>   
-                     
+                </IconButton>                       
 
             </ListItem>
         
         </Paper>
     );
-
 
 }
 
