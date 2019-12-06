@@ -51,20 +51,23 @@ function reducer(state = initialState, action){
 
             }
 
-        case EDIT_TODO:
-                return {
-                    ...state,
-                    isEditing: true,                    
-                    //appeand the newTodo in action.payload to the todoList array
-                    todoList: [...state.todoList, state.todoList.map( (todo, index) => {
-                        if(todo.id === state.todoItemToEdit.id) {
-                            state.todoList.splice(index, 1, state.todoItemToEdit)
-                        }
-                        
-                    }) ],
-                    todoItemToEdit: {}   //resets to undefined so edit form will disappear      
-    
-                }
+        case EDIT_TODO:               
+         
+        return {
+            ...state,
+            isEditing: true,                    
+            ...state.todoList.map( (todo, index) => {
+                /*if the id of the item in the todo list matches the id in the 
+                    action.payload(item to be edited) then splice the array at that index by deleting
+                    the item currently at that index and adding the todo item in action.payload to that index*/
+                if(todo.id === action.payload.id) {
+                    state.todoList.splice(index, 1, action.payload)                            
+                }                  
+                
+            }),                  
+            todoItemToEdit: {},   //resets to undefined so edit form will disappear                  
+
+            }
 
         case SET_EDIT_TODO:
             return {                
