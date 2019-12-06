@@ -1,7 +1,7 @@
 import React, { useState, memo } from "react";
 import { TextField, Paper, Button, Grid } from "@material-ui/core"
 import { connnect } from "react-redux";
-import { setTodoToEdit, addTodo } from "../actions/actions.js";
+import { setTodoToEdit, addTodo, editTodo } from "../actions/actions.js";
 import { connect } from "react-redux";
 
 function EditForm(props){   
@@ -11,21 +11,22 @@ function EditForm(props){
 
     console.log("todo item to edit in edit form", props.todoItemToEdit[0]);
 
+    //used [0] because an object inside an array [{}] is stored in todoItemToEdit state in reducer.js 
     const [editItem, setEditItem] = useState({ id: props.todoItemToEdit[0].id, 
                                                todo: props.todoItemToEdit[0].todo, 
-                                               completed: props.todoItemToEdit.completed });
+                                               completed: props.todoItemToEdit[0].completed });
 
-    console.log(" edit todo ", editItem.todo);
+    console.log(" edit todo in edit form", editItem.todo);
 
     const handleChange = (event) => {
 
         event.preventDefault();
 
         setEditItem({
-            id: Date.now(),
+            id: props.todoItemToEdit[0].id,
             [event.target.name]: event.target.value,
-            completed: false
-        })
+            completed: props.todoItemToEdit[0].completed
+        })        
     }
 
     const handleSubmit = (event) => {
@@ -35,11 +36,11 @@ function EditForm(props){
             window.alert("Please enter a todo item.")
         } else {
 
-            props.addTodo(editItem);  
+            props.editTodo(editItem);  
 
         }       
 
-        console.log("todo", editItem);
+        console.log("edited todo in handle submit in edit form", editItem);
 
         resetForm();
 
@@ -91,4 +92,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {addTodo, setTodoToEdit})(EditForm);
+export default connect(mapStateToProps, {addTodo, editTodo, setTodoToEdit})(EditForm);

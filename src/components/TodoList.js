@@ -32,6 +32,8 @@ function TodoList(props){
     let count = props.todoList.length; //total number of all tasks
     let completedCount = 0; //completed tasks
     let incompleteCount = 0; //incomplete tasks
+
+    console.log("todolist in todolist", props.todoList);
     
     //finds completed tasks
     props.todoList.forEach( todo => {

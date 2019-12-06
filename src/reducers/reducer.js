@@ -1,4 +1,5 @@
 import {ADD_TODO} from "../actions/actions.js";
+import {EDIT_TODO} from "../actions/actions.js";
 import {SET_EDIT_TODO} from "../actions/actions.js"; //sets the item to be edited in state
 import {DELETE_TODO} from "../actions/actions.js";
 import {TOGGLE_COMPLETED} from "../actions/actions.js";
@@ -49,6 +50,21 @@ function reducer(state = initialState, action){
                 todoList: [...state.todoList, action.payload]             
 
             }
+
+        case EDIT_TODO:
+                return {
+                    ...state,
+                    isEditing: true,                    
+                    //appeand the newTodo in action.payload to the todoList array
+                    todoList: [...state.todoList, state.todoList.map( (todo, index) => {
+                        if(todo.id === state.todoItemToEdit.id) {
+                            state.todoList.splice(index, 1, state.todoItemToEdit)
+                        }
+                        
+                    }) ],
+                    todoItemToEdit: {}   //resets to undefined so edit form will disappear      
+    
+                }
 
         case SET_EDIT_TODO:
             return {                

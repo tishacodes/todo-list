@@ -21,6 +21,15 @@ export const addTodo = (newTodo) => {
 
 }
 
+export const editTodo = (editItem) => {
+
+    return{
+        type: EDIT_TODO,
+        payload: editItem
+    }
+
+}
+
 export const setTodoToEdit = (id) => {
 
     return {
