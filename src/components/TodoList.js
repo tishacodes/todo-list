@@ -5,13 +5,19 @@ import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
+import EditForm from "./EditForm.js";
 
 import { connect } from "react-redux";
 import TodoItem from "./TodoItem.js";
 import TodoForm from "./TodoForm.js";
 import AppBar from "./AppBar.js";
 
-import { deleteTodo, toggleCompleted, clearAllTasks, clearCompletedTasks, clearIncompleteTasks } from "../actions/actions.js";
+import { setTodoToEdit,     
+         deleteTodo, 
+         toggleCompleted, 
+         clearAllTasks, 
+         clearCompletedTasks, 
+         clearIncompleteTasks } from "../actions/actions.js";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -39,8 +45,7 @@ function TodoList(props){
         if(todo.completed === false){
             incompleteCount = incompleteCount + 1;
         }
-    })      
-
+    })    
     
     return (
         <Box display="flex" flexWrap="nowrap" p={1} m={1} justifyContent = "center">
@@ -56,14 +61,56 @@ function TodoList(props){
                     clearIncompleteTasks = {props.clearIncompleteTasks} />
 
                 <div>
+                
+                <TodoForm />                
+               
+                {/*start outer ternary statement*/} 
+                {/*if the first item in the todoItemToEdit array is not undefined
+                   map over the todoList array */}
+                {props.todoItemToEdit[0] !== undefined ? (
 
-                <TodoForm />
+                    /*compare the id of each todo item to the id of the item to edit
+                      if there is a match, display the edit form, else display the item */
+                    props.todoList.map (todo => {
 
-                {props.todoList.map (todo => {
-                    return <TodoItem todo = {todo} 
-                                    deleteTodo = {props.deleteTodo} 
-                                    toggleCompleted = {props.toggleCompleted} />
-                })}
+                        {/*start inner ternary statement*/} 
+                        return (todo.id !== props.todoItemToEdit[0].id ) ? 
+                        (  
+
+                        <TodoItem todo = {todo} 
+                                todoItemToEdit = {props.todoItemToEdit}
+                                isEditing = {props.isEditing}
+                                resetEditState = {props.resetEditState}
+                                setTodoToEdit = {props.setTodoToEdit}
+                                deleteTodo = {props.deleteTodo} 
+                                toggleCompleted = {props.toggleCompleted} /> ) 
+                                
+                        :
+
+                        <EditForm todoItemToEdit = {props.todoItemToEdit} resetEditState = {props.resetEditState} isEditing = {props.isEditing} /> 
+                        
+                    })
+
+                )  /*end inner ternary statement*/ 
+                
+                : 
+                /*else -- if props.todoItemToEdit[0] is undefined, return the todo items*/
+                
+                (
+                    props.todoList.map (todo => {                       
+
+                        return <TodoItem todo = {todo} 
+                                todoItemToEdit = {props.todoItemToEdit}
+                                isEditing = {props.isEditing}
+                                resetEditState = {props.resetEditState}
+                                setTodoToEdit = {props.setTodoToEdit}
+                                deleteTodo = {props.deleteTodo} 
+                                toggleCompleted = {props.toggleCompleted} /> 
+                    })
+                )
+
+                }  {/*end outer ternary statement*/}           
+
                 
                 </div>
             
@@ -77,12 +124,17 @@ function TodoList(props){
 const mapStateToProps = (state) => {
 
     return {
-        todoList: state.todoList
-
+        todoList: state.todoList,
+        isEditing: state.isEditing,
+        todoItemToEdit: state.todoItemToEdit   
     }
-
 }
 
-export default connect(mapStateToProps, 
-                      { deleteTodo, toggleCompleted, clearAllTasks, clearCompletedTasks, clearIncompleteTasks })
-                      (TodoList);
+export default connect(mapStateToProps, { 
+                        setTodoToEdit, 
+                        deleteTodo, 
+                        toggleCompleted, 
+                        clearAllTasks, 
+                        clearCompletedTasks, 
+                        clearIncompleteTasks 
+                    })(TodoList);

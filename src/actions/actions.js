@@ -3,6 +3,8 @@
 //Then we give action.type the variable as it’s value and import it wherever we need it.
 
 export const ADD_TODO = "ADD_TODO";
+export const EDIT_TODO = "EDIT_TODO";
+export const SET_EDIT_TODO = "SET_EDIT_TODO";
 export const DELETE_TODO = "DELETE_TODO";
 export const TOGGLE_COMPLETED = "TOGGLE_COMPLETED";
 export const CLEAR_ALL_TASKS = "CLEAR_ALL_TASKS";
@@ -15,6 +17,15 @@ export const addTodo = (newTodo) => {
     return{
         type: ADD_TODO,
         payload: newTodo
+    }
+
+}
+
+export const setTodoToEdit = (id) => {
+
+    return {
+        type: SET_EDIT_TODO,
+        payload: id
     }
 
 }

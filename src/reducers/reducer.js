@@ -1,4 +1,5 @@
 import {ADD_TODO} from "../actions/actions.js";
+import {SET_EDIT_TODO} from "../actions/actions.js"; //sets the item to be edited in state
 import {DELETE_TODO} from "../actions/actions.js";
 import {TOGGLE_COMPLETED} from "../actions/actions.js";
 import {CLEAR_ALL_TASKS} from "../actions/actions.js";
@@ -8,25 +9,28 @@ import {CLEAR_INCOMPLETE_TASKS} from "../actions/actions.js";
 
 //state object
 const initialState = {
+    
     todoList: [        
         {
             id: 1,
             todo: "code",
-            completed: false
+            completed: false,            
         },
 
         {
             id: 2,
             todo: "sleep",
-            completed: false
+            completed: false,           
         },
 
         {
             id: 3,
             todo: "repeat",
-            completed: false
+            completed: false,           
         }
-    ]    
+    ],
+    todoItemToEdit: {},
+    isEditing: false  
     
 }
 
@@ -37,17 +41,30 @@ function reducer(state = initialState, action){
     switch(action.type){
 
         case ADD_TODO:
-
             return {
                 ...state,
+                isEditing: false,
+                todoItemToEdit: {},
                 //appeand the newTodo in action.payload to the todoList array
                 todoList: [...state.todoList, action.payload]             
 
             }
 
+        case SET_EDIT_TODO:
+            return {                
+               ...state,
+               isEditing:true,
+               todoItemToEdit: state.todoList.filter( todo => {
+                   return todo.id === action.payload ? true : false
+               })               
+
+            }       
+
         case DELETE_TODO:
             return {
                 ...state,
+                isEditing: false,
+                todoItemToEdit: {},
                 //filter method creates a new array with all elements that passes the test(returns true)
                 todoList: state.todoList.filter( todo => {
                     {                        
@@ -60,6 +77,8 @@ function reducer(state = initialState, action){
         case TOGGLE_COMPLETED:
             return {
                 ...state,
+                isEditing: false,
+                todoItemToEdit: {},
                 todoList: state.todoList.map( todo => {
                     if(todo.id === action.payload){
                         return {
@@ -70,23 +89,24 @@ function reducer(state = initialState, action){
                     else {
                         return todo;
                     }
-
                 })
-
             }       
 
         case CLEAR_ALL_TASKS:
             return {
                 ...state,
+                isEditing: false,
+                todoItemToEdit: {},
                 todoList: state.todoList.filter (todo => {
                     return false;
                 })
-
             }
 
         case CLEAR_COMPLETED_TASKS:
             return {
                 ...state,
+                isEditing: false,
+                todoItemToEdit: {},
                 todoList: state.todoList.filter (todo => {
                     return !todo.completed
                 })
@@ -95,6 +115,8 @@ function reducer(state = initialState, action){
             case CLEAR_INCOMPLETE_TASKS:
                     return {
                         ...state,
+                        isEditing: false,
+                        todoItemToEdit: {},
                         todoList: state.todoList.filter (todo => {
                             return todo.completed
                         })
