@@ -6,12 +6,10 @@ import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
 import EditForm from "./EditForm.js";
-import { getState } from "redux-localstore";
 import { connect } from "react-redux";
 import TodoItem from "./TodoItem.js";
 import TodoForm from "./TodoForm.js";
 import AppBar from "./AppBar.js";
-
 
 import { setTodoToEdit,     
          deleteTodo, 
@@ -19,8 +17,6 @@ import { setTodoToEdit,
          clearAllTasks, 
          clearCompletedTasks, 
          clearIncompleteTasks } from "../actions/actions.js";
-
-const state = getState("reducer");
 
 const useStyles = makeStyles(theme => ({
     root: {
