@@ -24,8 +24,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function TodoList(props){  
-    
+function TodoList(props){      
 
     const classes = useStyles();
 
