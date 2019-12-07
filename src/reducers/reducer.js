@@ -1,3 +1,5 @@
+import { defineState } from "redux-localstore";
+
 import {ADD_TODO} from "../actions/actions.js";
 import {EDIT_TODO} from "../actions/actions.js";
 import {SET_EDIT_TODO} from "../actions/actions.js"; //sets the item to be edited in state
@@ -8,9 +10,8 @@ import {CLEAR_COMPLETED_TASKS} from "../actions/actions.js";
 import {CLEAR_INCOMPLETE_TASKS} from "../actions/actions.js";
 
 
-//state object
-const initialState = {
-    
+
+const defaultState = {
     todoList: [        
         {
             id: 1,
@@ -32,11 +33,15 @@ const initialState = {
     ],
     todoItemToEdit: {},
     isEditing: false  
-    
-}
+  };
 
 
-function reducer(state = initialState, action){
+//state object
+const initialState = defineState(defaultState)("reducer"); 
+
+
+
+export default function reducer (state = initialState, action){
 
     //Inside reducers, we use switch statements to look at the action type, then return the updated state.
     switch(action.type){
@@ -147,6 +152,8 @@ function reducer(state = initialState, action){
 
     }//end switch
 
-}
+}//end reducer
 
-export default reducer;
+
+
+
