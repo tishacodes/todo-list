@@ -1,15 +1,13 @@
-//function that loads the state
+//function that loads the state from local storage
 export const loadState = () => {
     try {
         const serializedState = localStorage.getItem("state");
 
-        //if null it means the key does not exist
+        //if null, key does not exist
         if(serializedState === null){
             return undefined;
-
         }
         return JSON.parse(serializedState);
-
     }
     catch(err){
         return undefined;

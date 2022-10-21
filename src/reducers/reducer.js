@@ -11,24 +11,7 @@ import {CLEAR_INCOMPLETE_TASKS} from "../actions/actions.js";
 //state object
 const initialState = {
     
-    todoList: [        
-        {
-            id: 1,
-            todo: "code",
-            completed: false,            
-        },
-
-        {
-            id: 2,
-            todo: "sleep",
-            completed: false,           
-        },
-
-        {
-            id: 3,
-            todo: "repeat",
-            completed: false,           
-        }
+    todoList: [               
     ],
     todoItemToEdit: {},
     isEditing: false  
