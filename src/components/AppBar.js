@@ -170,7 +170,7 @@ export default function PrimarySearchAppBar(props) {
             <FormatListBulletedIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Todo App
+            ToDo App
           </Typography>
          
          
