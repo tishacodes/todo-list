@@ -4,23 +4,14 @@ import DeleteOutlined from '@material-ui/icons/DeleteOutlined';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import EditForm from "./EditForm.js";
 
-function TodoItem(props){
-
-    console.log("edit state before return", props.isEditing);
-
-    //{props.todoItemToEdit === undefined ? null : props.todo.id};
-
-    //return !(props.todo.id === props.todoItemToEdit[0].id) ?
-    //(       
-    
-        return(
-        <Paper style={{ margin: 16, padding: 5 }}>
-        
+function TodoItem(props){    
+    return(
+        <Paper style={{ margin: 16, padding: 5 }}>            
             <ListItem divider={props.divider}>
                 <Checkbox
-                onChange = {() => props.toggleCompleted(props.todo.id)}
-                checked={props.todo.completed}
-                disableRipple/>
+                    onChange = {() => props.toggleCompleted(props.todo.id)}
+                    checked={props.todo.completed}
+                    disableRipple/>
 
                 <ListItemText primary={props.todo.todo} style = {{overflow: "auto"}} /> 
 
@@ -34,15 +25,10 @@ function TodoItem(props){
                                 
                 <IconButton aria-label="Delete Todo" >
                     <DeleteOutlined onClick = {() => props.deleteTodo(props.todo.id)}/>
-                </IconButton>                       
-
-            </ListItem>
-        
+                </IconButton>
+            </ListItem>            
         </Paper>
-
-    ); //: <EditForm resetEditState = {props.resetEditState} />
-
-    
+    );    
 }
 
 export default TodoItem;

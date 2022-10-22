@@ -7,20 +7,16 @@ import {CLEAR_ALL_TASKS} from "../actions/actions.js";
 import {CLEAR_COMPLETED_TASKS} from "../actions/actions.js";
 import {CLEAR_INCOMPLETE_TASKS} from "../actions/actions.js";
 
-
 //state object
-const initialState = {
-    
+const initialState = {    
     todoList: [               
+
     ],
     todoItemToEdit: {},
-    isEditing: false  
-    
+    isEditing: false      
 }
 
-
 function reducer(state = initialState, action){
-
     //Inside reducers, we use switch statements to look at the action type, then return the updated state.
     switch(action.type){
 
@@ -30,26 +26,22 @@ function reducer(state = initialState, action){
                 isEditing: false,
                 todoItemToEdit: {},
                 //appeand the newTodo in action.payload to the todoList array
-                todoList: [...state.todoList, action.payload]             
-
+                todoList: [...state.todoList, action.payload]    
             }
 
-        case EDIT_TODO:               
-         
-        return {
-            ...state,
-            isEditing: true,                    
-            ...state.todoList.map( (todo, index) => {
-                /*if the id of the item in the todo list matches the id in the 
+        case EDIT_TODO:    
+            return {
+                ...state,
+                isEditing: true,                    
+                ...state.todoList.map( (todo, index) => {
+                    /*if the id of the item in the todo list matches the id in the 
                     action.payload(item to be edited) then splice the array at that index by deleting
                     the item currently at that index and adding the todo item in action.payload to that index*/
-                if(todo.id === action.payload.id) {
-                    state.todoList.splice(index, 1, action.payload)                            
-                }                  
-                
-            }),                  
-            todoItemToEdit: {},   //resets to undefined so edit form will disappear                  
-
+                    if(todo.id === action.payload.id) {
+                        state.todoList.splice(index, 1, action.payload)                            
+                    }                
+                }),                  
+                todoItemToEdit: {},   //resets to undefined so edit form will disappear
             }
 
         case SET_EDIT_TODO:
@@ -58,8 +50,7 @@ function reducer(state = initialState, action){
                isEditing:true,
                todoItemToEdit: state.todoList.filter( todo => {
                    return todo.id === action.payload ? true : false
-               })               
-
+               })
             }       
 
         case DELETE_TODO:
@@ -73,7 +64,6 @@ function reducer(state = initialState, action){
                         return (todo.id === action.payload) ? false : true
                     }
                 })
-
             }
 
         case TOGGLE_COMPLETED:
@@ -127,9 +117,7 @@ function reducer(state = initialState, action){
         default:
             return state;
 
-
     }//end switch
-
 }
 
 export default reducer;

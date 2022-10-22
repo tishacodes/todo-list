@@ -1,15 +1,12 @@
 import React, { useState, memo } from "react";
-import { TextField, Paper, Button, Grid } from "@material-ui/core"
-import { connnect } from "react-redux";
+import { TextField, Paper, Button, Grid } from "@material-ui/core";
 import { addTodo } from "../actions/actions.js";
 import { connect } from "react-redux";
 
 function TodoForm(props){
-
     const [todoItem, setTodoItem] = useState({ id: Date.now(), todo: "", completed: false });
 
     const handleChange = (event) => {
-
         event.preventDefault();
 
         setTodoItem({
@@ -23,17 +20,12 @@ function TodoForm(props){
         event.preventDefault();
 
         if(todoItem.todo === ""){
-            window.alert("Please enter a todo item.")
+            window.alert("Please enter a todo item.");
         } else {
-
             props.addTodo(todoItem);  
-
-        }       
-
-        console.log("todo", todoItem);
+        }              
 
         resetForm();
-
     }
 
     const resetForm = () => {
@@ -43,40 +35,36 @@ function TodoForm(props){
     }
 
     return(
-
-
         <Paper style={{ margin: 16, padding: 16 }}>
             <form onSubmit = {handleSubmit} >
-                <Grid container>
-                    
+                <Grid container>                    
                     <Grid display="flex" flexWrap="nowrap" xs={10} md={10} justifyContent = "flex-start" item style={{ paddingRight: 16 }} >
                         <TextField
-                        placeholder="...add todo"
-                        name = "todo"
-                        value = {todoItem.todo}
-                        onChange = {handleChange}            
-                        fullWidth />
+                            placeholder="...add todo"
+                            name = "todo"
+                            value = {todoItem.todo}
+                            onChange = {handleChange}            
+                            fullWidth 
+                        />
                     </Grid>
                     <Grid xs={2} md={1} item>
                         <Button
-                        fullWidth
-                        color="secondary"
-                        variant="outlined"
-                        type = "submit"
-                        onClick = {handleSubmit}>
-                        Add
+                            disabled={todoItem.todo === ""}
+                            fullWidth
+                            color="secondary"
+                            variant="outlined"
+                            type = "submit"
+                            onClick = {handleSubmit}>
+                            Add
                         </Button>
                     </Grid>               
                 </Grid>
             </form>
         </Paper>
-
     );
-
 }
 
 const mapStateToProps = (state) => {
-
     return {
         todoList: state.todoList
     }

@@ -13,52 +13,41 @@ export const CLEAR_INCOMPLETE_TASKS = "GET_UNCOMPLETED_TASKS_COUNT";
 
 //action creators - functions that create and dispatches/returns actions (objects)
 export const addTodo = (newTodo) => {
-
     return{
         type: ADD_TODO,
         payload: newTodo
     }
-
 }
 
 export const editTodo = (editItem) => {
-
     return{
         type: EDIT_TODO,
         payload: editItem
     }
-
 }
 
 export const setTodoToEdit = (id) => {
-
     return {
         type: SET_EDIT_TODO,
         payload: id
     }
-
 }
 
 export const deleteTodo = (id) => {
-
     return{
         type: DELETE_TODO,
         payload: id
     }
-
 }
 
 export const toggleCompleted = (id) => {
-
     return{
         type: TOGGLE_COMPLETED,
         payload: id
     }
-
 }
 
 export const clearAllTasks = (todoList) => {
-
     return {
         type: CLEAR_ALL_TASKS,
         payload: todoList
@@ -66,7 +55,6 @@ export const clearAllTasks = (todoList) => {
 }
 
 export const clearCompletedTasks = (todoList) => {
-
     return {
         type: CLEAR_COMPLETED_TASKS,
         payload: todoList
@@ -74,7 +62,6 @@ export const clearCompletedTasks = (todoList) => {
 }
 
 export const clearIncompleteTasks = (todoList) => {
-
     return {
         type: CLEAR_INCOMPLETE_TASKS,
         payload: todoList
