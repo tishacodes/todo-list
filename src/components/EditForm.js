@@ -27,8 +27,8 @@ function EditForm(props){
             window.alert("Please enter a todo item.")
         } else {
             props.editTodo(editItem);
-        }             
-
+        }
+        
         resetForm();
     }
 

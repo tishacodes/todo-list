@@ -2,7 +2,6 @@ import React from "react";
 import {Paper, Grid, List, ListItem, Checkbox, IconButton, ListItemText, ListItemSecondaryAction} from "@material-ui/core";
 import DeleteOutlined from '@material-ui/icons/DeleteOutlined';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
-import EditForm from "./EditForm.js";
 
 function TodoItem(props){    
     return(
@@ -17,9 +16,8 @@ function TodoItem(props){
 
                 <IconButton aria-label="Edit Todo" >
                     <EditOutlinedIcon onClick = {() => {
-                                                            props.setTodoToEdit(props.todo.id);                                                            
-                                                            console.log("edit state in onclick", props.isEditing);
-                                                        }}
+                                                            props.setTodoToEdit(props.todo.id);                                                           
+                                                       }}
                     />
                 </IconButton>                   
                                 

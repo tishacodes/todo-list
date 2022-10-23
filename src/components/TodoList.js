@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Box, Paper, Toolbar, Typography} from '@material-ui/core';
+import {Box, Paper} from '@material-ui/core';
 import EditForm from "./EditForm.js";
 import { connect } from "react-redux";
 import TodoItem from "./TodoItem.js";
@@ -80,8 +80,7 @@ function TodoList(props){
                         : 
                         /*else -- if props.todoItemToEdit[0] is undefined, return the todo items*/                    
                         (
-                            props.todoList.map (todo => {                       
-
+                            props.todoList.map (todo => {
                                 return <TodoItem todo = {todo} 
                                         todoItemToEdit = {props.todoItemToEdit}
                                         isEditing = {props.isEditing}

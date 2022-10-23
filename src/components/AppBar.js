@@ -178,7 +178,7 @@ export default function PrimarySearchAppBar(props) {
             </IconButton>
             <IconButton onClick = {() => props.clearCompletedTasks(props.todoList)} aria-label="show 17 new notifications" color="inherit">
             <Tooltip title="Click to Delete Completed Todos" arrow>
-              <Badge badgeContent={ completedCount} color="secondary">
+              <Badge badgeContent={completedCount} color="secondary">
                 <PlaylistAddCheckIcon />
               </Badge>
             </Tooltip>
@@ -204,8 +204,7 @@ export default function PrimarySearchAppBar(props) {
           </div>
         </Toolbar>
       </AppBar>
-      {renderMobileMenu}
-      
+      {renderMobileMenu}      
     </div>
   );
 }

@@ -19,7 +19,6 @@ const initialState = {
 function reducer(state = initialState, action){
     //Inside reducers, we use switch statements to look at the action type, then return the updated state.
     switch(action.type){
-
         case ADD_TODO:
             return {
                 ...state,
@@ -41,16 +40,17 @@ function reducer(state = initialState, action){
                         state.todoList.splice(index, 1, action.payload)                            
                     }                
                 }),                  
-                todoItemToEdit: {},   //resets to undefined so edit form will disappear
+                todoItemToEdit: {},//reset to undefined so edit form will disappear
             }
 
         case SET_EDIT_TODO:
             return {                
                ...state,
                isEditing:true,
+               //an object inside an array [{}] is stored in todoItemToEdit
                todoItemToEdit: state.todoList.filter( todo => {
                    return todo.id === action.payload ? true : false
-               })
+               })               
             }       
 
         case DELETE_TODO:
@@ -104,19 +104,18 @@ function reducer(state = initialState, action){
                 })
             }
 
-            case CLEAR_INCOMPLETE_TASKS:
-                    return {
-                        ...state,
-                        isEditing: false,
-                        todoItemToEdit: {},
-                        todoList: state.todoList.filter (todo => {
-                            return todo.completed
-                        })
-                    }
+        case CLEAR_INCOMPLETE_TASKS:
+            return {
+                ...state,
+                isEditing: false,
+                todoItemToEdit: {},
+                todoList: state.todoList.filter (todo => {
+                    return todo.completed
+                })
+            }
 
         default:
             return state;
-
     }//end switch
 }
 
