@@ -159,6 +159,7 @@ export default function PrimarySearchAppBar(props) {
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
+            style={{ pointerEvents: 'none' }}
           >
             <FormatListBulletedIcon />
           </IconButton>
