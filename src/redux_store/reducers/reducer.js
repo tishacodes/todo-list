@@ -3,6 +3,7 @@ import {EDIT_TODO} from "../actions/actions.js";
 import {SET_EDIT_TODO} from "../actions/actions.js"; //sets the item to be edited in state
 import {DELETE_TODO} from "../actions/actions.js";
 import {TOGGLE_COMPLETED} from "../actions/actions.js";
+import {TOGGLE_ALL_TODOS} from "../actions/actions.js";
 import {CLEAR_ALL_TASKS} from "../actions/actions.js";
 import {CLEAR_COMPLETED_TASKS} from "../actions/actions.js";
 import {CLEAR_INCOMPLETE_TASKS} from "../actions/actions.js";
@@ -13,7 +14,9 @@ const initialState = {
 
     ],
     todoItemToEdit: {},
-    isEditing: false      
+    isEditing: false,
+    incompleteCount: 0,
+    completeCount: 0
 }
 
 function reducer(state = initialState, action){
@@ -82,7 +85,7 @@ function reducer(state = initialState, action){
                         return todo;
                     }
                 })
-            }
+            }       
             
         case CLEAR_ALL_TASKS:
             return {

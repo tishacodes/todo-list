@@ -9,7 +9,7 @@ import AppBar from "./AppBar.js";
 
 import { setTodoToEdit,     
          deleteTodo, 
-         toggleCompleted, 
+         toggleCompleted,       
          clearAllTasks, 
          clearCompletedTasks, 
          clearIncompleteTasks } from "../redux_store/actions/actions.js";
@@ -47,7 +47,7 @@ function TodoList(props){
                 <AppBar count = {count} 
                         todoList = {props.todoList}
                         completedCount = {completedCount} 
-                        incompleteCount = {incompleteCount}
+                        incompleteCount = {incompleteCount}                       
                         clearAllTasks = {props.clearAllTasks}
                         clearCompletedTasks = {props.clearCompletedTasks}
                         clearIncompleteTasks = {props.clearIncompleteTasks} />

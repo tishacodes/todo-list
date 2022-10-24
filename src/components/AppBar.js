@@ -153,20 +153,19 @@ export default function PrimarySearchAppBar(props) {
   return (
     <div className={classes.grow}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar>          
           <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
-            style = {{ pointerEvents: 'none' }}              
-          >                       
-            <FormatListBulletedIcon />         
-          </IconButton>
+            style = {{ pointerEvents: 'none' }}                     
+          >  
+            <FormatListBulletedIcon />                     
+          </IconButton>         
           <Typography className={classes.title} variant="h6" noWrap>
             ToDo App
-          </Typography>
-         
+          </Typography>         
          
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
