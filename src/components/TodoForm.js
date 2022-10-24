@@ -1,6 +1,6 @@
 import React, { useState, memo } from "react";
 import { TextField, Paper, Button, Grid } from "@material-ui/core";
-import { addTodo } from "../actions/actions.js";
+import { addTodo } from "../redux_store/actions/actions.js";
 import { connect } from "react-redux";
 
 function TodoForm(props){

@@ -5,7 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import reducer from "./reducers/reducer.js";
+import reducer from "./redux_store/reducers/reducer.js";
 import {loadState, saveState} from "./LocalStorage.js";
 
 //Before creating the store, check localStorage and parse any JSON under your key like this:

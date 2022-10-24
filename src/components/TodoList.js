@@ -12,7 +12,7 @@ import { setTodoToEdit,
          toggleCompleted, 
          clearAllTasks, 
          clearCompletedTasks, 
-         clearIncompleteTasks } from "../actions/actions.js";
+         clearIncompleteTasks } from "../redux_store/actions/actions.js";
 
 const useStyles = makeStyles(theme => ({
     root: {

@@ -1,7 +1,7 @@
 import React, { useState, memo } from "react";
 import { TextField, Paper, Button, Grid } from "@material-ui/core"
 import { connnect } from "react-redux";
-import { setTodoToEdit, addTodo, editTodo } from "../actions/actions.js";
+import { setTodoToEdit, addTodo, editTodo } from "../redux_store/actions/actions.js";
 import { connect } from "react-redux";
 
 function EditForm(props){   
