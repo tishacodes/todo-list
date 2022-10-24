@@ -82,8 +82,8 @@ function reducer(state = initialState, action){
                         return todo;
                     }
                 })
-            }       
-
+            }
+            
         case CLEAR_ALL_TASKS:
             return {
                 ...state,

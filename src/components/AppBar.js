@@ -159,9 +159,9 @@ export default function PrimarySearchAppBar(props) {
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
-            style={{ pointerEvents: 'none' }}
-          >
-            <FormatListBulletedIcon />
+            style = {{ pointerEvents: 'none' }}              
+          >                       
+            <FormatListBulletedIcon />         
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             ToDo App
@@ -170,27 +170,33 @@ export default function PrimarySearchAppBar(props) {
          
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton disabled = {props.count === 0} onClick = {() => props.clearAllTasks(props.todoList)} aria-label="show all todos" color="inherit">
-            <Tooltip title="Click to Delete all Todos" arrow>
-              <Badge badgeContent={count} color="secondary">
-                <FormatListNumberedIcon  />
-              </Badge>
-            </Tooltip>
-            </IconButton>
-            <IconButton disabled = {props.completedCount === 0} onClick = {() => props.clearCompletedTasks(props.todoList)} aria-label="show 17 new notifications" color="inherit">
-            <Tooltip title="Click to Delete Completed Todos" arrow>
-              <Badge badgeContent={completedCount} color="secondary">
-                <PlaylistAddCheckIcon />
-              </Badge>
-            </Tooltip>
-            </IconButton>
-            <IconButton disabled = {props.incompleteCount === 0} onClick = {() => props.clearIncompleteTasks(props.todoList)} aria-label="show 17 new notifications" color="inherit">
-             <Tooltip title="Click to Delete Incomplete Todos" arrow>
-              <Badge badgeContent={incompleteCount} color="secondary">
-                <LowPriorityIcon />              
-              </Badge>
-             </Tooltip>
-            </IconButton>
+          <Tooltip title="Delete all Todos" arrow>
+            <span>
+              <IconButton disabled = {props.count === 0} onClick = {() => props.clearAllTasks(props.todoList)} aria-label="show all todos" color="inherit">            
+                <Badge badgeContent={count} color="secondary">
+                  <FormatListNumberedIcon  />
+                </Badge>           
+              </IconButton>
+            </span>
+          </Tooltip>
+          <Tooltip title="Delete Completed Todos" arrow>
+            <span>
+              <IconButton disabled = {props.completedCount === 0} onClick = {() => props.clearCompletedTasks(props.todoList)} aria-label="show 17 new notifications" color="inherit">            
+                <Badge badgeContent={completedCount} color="secondary">
+                  <PlaylistAddCheckIcon />
+                </Badge>            
+              </IconButton>
+            </span>
+          </Tooltip>
+          <Tooltip title="Delete Incomplete Todos" arrow>
+            <span>
+              <IconButton disabled = {props.incompleteCount === 0} onClick = {() => props.clearIncompleteTasks(props.todoList)} aria-label="show 17 new notifications" color="inherit">             
+                <Badge badgeContent={incompleteCount} color="secondary">
+                  <LowPriorityIcon />              
+                </Badge>             
+              </IconButton>
+            </span>
+          </Tooltip>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
