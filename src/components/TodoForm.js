@@ -1,4 +1,4 @@
-import React, { useState, memo } from "react";
+import React, { useState } from "react";
 import { TextField, Paper, Button, Grid } from "@material-ui/core";
 import { addTodo } from "../redux_store/actions/actions.js";
 import { connect } from "react-redux";

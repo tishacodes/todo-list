@@ -76,8 +76,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function PrimarySearchAppBar(props) {
-  //variables to store the number of all tasks, completed, and incomplete tasks passed in as props from TodoList.js
+export default function PrimarySearchAppBar(props) {  
   const count = props.count > 0 ? props.count : "0";
   const completedCount = props.completedCount > 0 ? props.completedCount : "0";
   const incompleteCount = props.incompleteCount > 0 ? props.incompleteCount : "0";

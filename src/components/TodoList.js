@@ -24,17 +24,15 @@ function TodoList(props){
     const classes = useStyles();
 
     let count = props.todoList.length; //total number of all tasks
-    let completedCount = 0; //completed tasks
-    let incompleteCount = 0; //incomplete tasks
+    let completedCount = 0;
+    let incompleteCount = 0;    
     
-    //find completed tasks
     props.todoList.forEach( todo => {
         if(todo.completed === true){
             completedCount = completedCount + 1;
         }
-    })    
-    
-    //find incomplete tasks
+    })        
+   
     props.todoList.forEach( todo => {
         if(todo.completed === false){
             incompleteCount = incompleteCount + 1;
@@ -59,22 +57,22 @@ function TodoList(props){
                     {/*if the first item in the todoItemToEdit array is not undefined
                     map over the todoList array */}
                     {
+                        //an object inside an array [{}] is stored in todoItemToEdit
                         props.todoItemToEdit[0] !== undefined ? (
                             /*compare the id of each todo item to the id of the item to edit
-                            if there is a match, display the edit form, else display the item */
+                            if there is a match, display the edit form, else display the todo item */
                             props.todoList.map (todo => {
                                 {/*start inner ternary statement*/} 
                                 return (todo.id !== props.todoItemToEdit[0].id ) ? 
                                 (  
                                 <TodoItem todo = {todo} 
                                         todoItemToEdit = {props.todoItemToEdit}
-                                        isEditing = {props.isEditing}
-                                        resetEditState = {props.resetEditState}
+                                        isEditing = {props.isEditing}                                      
                                         setTodoToEdit = {props.setTodoToEdit}
                                         deleteTodo = {props.deleteTodo} 
                                         toggleCompleted = {props.toggleCompleted} /> )                                     
                                 :
-                                <EditForm todoItemToEdit = {props.todoItemToEdit} resetEditState = {props.resetEditState} isEditing = {props.isEditing} />                                 
+                                <EditForm todoItemToEdit = {props.todoItemToEdit} isEditing = {props.isEditing} />                                 
                             })
                         )  /*end inner ternary statement*/                     
                         : 
@@ -83,8 +81,7 @@ function TodoList(props){
                             props.todoList.map (todo => {
                                 return <TodoItem todo = {todo} 
                                         todoItemToEdit = {props.todoItemToEdit}
-                                        isEditing = {props.isEditing}
-                                        resetEditState = {props.resetEditState}
+                                        isEditing = {props.isEditing}                                       
                                         setTodoToEdit = {props.setTodoToEdit}
                                         deleteTodo = {props.deleteTodo} 
                                         toggleCompleted = {props.toggleCompleted} /> 
